@@ -65,6 +65,21 @@ The processor follows the classic five-stage RISC-V pipeline.
 
 ---
 
+# Simulation Methodology
+
+RTL verification was carried out using the Xilinx Vivado simulator. During simulation, the processor was initialized by driving the **reset (rst)** signal through the required initialization sequence (`0 → 1 → 0`), while **PCSrc** was held low to enable normal sequential instruction execution. This methodology was used to validate the processor pipeline, control logic, hazard handling, and the lightweight cryptographic co-processor interface.
+
+The simulation verified:
+
+- Processor initialization and reset sequence
+- Sequential instruction execution
+- Five-stage pipeline operation
+- Data forwarding and hazard detection
+- Pipeline stall behavior during cryptographic operations
+- Processor–Crypto co-processor handshake
+
+  ---
+
 # Supported Directory Structure
 
 ```text
