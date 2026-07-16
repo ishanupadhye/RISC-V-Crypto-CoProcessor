@@ -142,12 +142,10 @@ RISC-V-Crypto-CoProcessor/
 └── memory/
 ```
 
-Every CPU stage has its own dedicated README containing:
+The Crypto Coprocessor repository have its own README containing:
 
-- RTL Block Diagram
-- Internal RTL Schematic
-- Module Description
-- Inputs and Outputs
+- Working Flowchart
+- Simulation
 - Design Notes
 
 ---
