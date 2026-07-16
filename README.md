@@ -140,10 +140,8 @@ Every CPU stage has its own dedicated README containing:
 # Development Tools
 
 - Verilog HDL
-- Xilinx Vivado 2025.1
-- Quartus
-
-
+- Xilinx Vivado
+- Quartus II
 
 ---
 
