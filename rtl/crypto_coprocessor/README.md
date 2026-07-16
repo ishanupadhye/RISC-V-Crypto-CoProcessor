@@ -10,7 +10,7 @@ The lightweight cryptographic co-processor features a modified 6-round AES archi
 The figure below illustrates the encryption flow implemented by the lightweight AES cryptographic engine.
 
 <p align="center">
-    <img src="../../../doc/images/crypto_flow.png" width="650">
+    <img src="/doc/images/crypto_flow.png" width="650">
 </p>
 
 The encryption process begins when the processor issues a custom cryptographic instruction. The AES co-processor accepts the plaintext and encryption key, performs the encryption internally, and returns the generated ciphertext to the processor upon completion.
@@ -22,7 +22,7 @@ The encryption process begins when the processor issues a custom cryptographic i
 The following simulation waveform verifies the communication between the processor and the cryptographic accelerator.
 
 <p align="center">
-    <img src="../../../doc/images/crypto_waves.png" width="950">
+    <img src="/doc/images/crypto_waves.png" width="950">
 </p>
 
 The waveform demonstrates the complete processor–accelerator handshake:
