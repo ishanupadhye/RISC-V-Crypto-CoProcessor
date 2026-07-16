@@ -11,8 +11,31 @@ This repository presents the complete RTL implementation of a pipelined RISC-V p
 The figure below illustrates the complete processor architecture, showing the integration of the five-stage RISC-V pipeline with the custom cryptographic co-processor.
 
 <p align="center">
-  <img src="docs/images/riscv_cpu_synthesis.png" width="950">
+  <img src="doc/images/riscv_cpu_synthesis.png" width="950">
 </p>
+
+---
+
+# Supported Instruction Formats
+
+The processor follows the standard **RV32I RISC-V instruction encoding**, supporting the fundamental instruction formats required for arithmetic, logical, memory access, control flow, and immediate operations.
+
+The implemented instruction formats include:
+
+- **R-Type** – Register-to-register arithmetic and logical operations
+- **I-Type** – Immediate arithmetic, loads, and JALR instructions
+- **S-Type** – Store instructions
+- **B-Type** – Conditional branch instructions
+- **U-Type** – Upper immediate instructions (LUI/AUIPC)
+- **J-Type** – Unconditional jump (JAL)
+
+The figure below summarizes the bit-field organization of each RV32I instruction format used by the processor.
+
+<p align="center">
+    <img src="doc/images/ISA.png" width="900">
+</p>
+
+The cryptographic instructions are integrated through a custom-0 opcode that follows R type instruction, for encryption. Preserving compatibility with the standard RV32I instruction encoding, enabling seamless interaction between the processor pipeline and the AES co-processor.
 
 ---
 
@@ -97,7 +120,7 @@ The following waveform demonstrates the interaction between the processor and th
 The processor issues an encryption request through **aes_start**, the accelerator enters the **aes_busy** state while computation is performed, and finally returns the encrypted ciphertext after completion.
 
 <p align="center">
-  <img src="docs/images/handshake.png" width="950">
+  <img src="doc/images/handshake.png" width="950">
 </p>
 
 ---
