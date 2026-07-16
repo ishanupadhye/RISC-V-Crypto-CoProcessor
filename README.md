@@ -141,18 +141,6 @@ Future updates will include:
 
 ---
 
-# Future Work
-
-- Complete project documentation
-- RTL block diagrams
-- Functional verification documentation
-- Pipeline timing diagrams
-- Architecture illustrations
-- FPGA implementation
-- RTL-to-GDSII physical implementation
-
----
-
 # Author
 
 **Ishan Upadhye**
