@@ -8,11 +8,9 @@ This repository presents the complete RTL implementation of a pipelined RISC-V p
 
 # System Architecture
 
-The figure below illustrates the complete processor architecture, showing the integration of the five-stage RISC-V pipeline with the custom cryptographic co-processor.
+The pdf below illustrates the high resolution complete processor architecture, showing the integration of the five-stage RISC-V pipeline with the custom cryptographic co-processor.
 
-<p align="center">
-  <img src="doc/images/riscv_cpu_synthesis.png" width="950">
-</p>
+📄 [RISC-V CPU RTL Schematic (PDF)](doc/figures/schemetic.pdf)
 
 ---
 
