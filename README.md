@@ -63,12 +63,6 @@ The processor follows the classic five-stage RISC-V pipeline.
 | **Memory (MEM)** | Executes load/store operations through Data Memory |
 | **Write Back (WB)** | Writes computation results back into the Register File |
 
-Complete documentation for every stage is available inside the corresponding directory under:
-
-```text
-rtl/cpu/
-```
-
 ---
 
 # Supported Directory Structure
