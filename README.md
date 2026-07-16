@@ -2,142 +2,148 @@
 
 A custom **32-bit 5-stage pipelined RISC-V processor** integrated with a **lightweight cryptographic co-processor**, developed entirely in **Verilog HDL**.
 
-This project demonstrates the complete RTL design of a pipelined RISC-V processor along with a custom cryptographic accelerator intended for secure embedded and edge computing applications.
+This repository presents the complete RTL implementation of a pipelined RISC-V processor tightly coupled with a lightweight AES-based cryptographic accelerator. The design targets secure embedded and edge computing applications by accelerating cryptographic operations while preserving the standard processor pipeline.
 
 ---
 
-## Overview
+# System Architecture
 
-The processor follows the classic five-stage RISC-V pipeline:
+The figure below illustrates the complete processor architecture, showing the integration of the five-stage RISC-V pipeline with the custom cryptographic co-processor.
 
-- Instruction Fetch (IF)
-- Instruction Decode (ID)
-- Execute (EX)
-- Memory Access (MEM)
-- Write Back (WB)
-
-The processor is integrated with a lightweight cryptographic co-processor to accelerate cryptographic operations while maintaining compatibility with the processor datapath.
+<p align="center">
+  <img src="docs/images/cipher.png" width="950">
+</p>
 
 ---
 
-## Features
+# Features
 
 - 32-bit RISC-V Processor
 - Five-stage pipelined architecture
-- Modular RTL design
-- Hazard handling logic
-- Lightweight cryptographic co-processor
-- Written entirely in Verilog HDL
-- Hierarchical project organization for easy understanding
+- Lightweight AES Cryptographic Co-Processor
+- Tight processor-accelerator integration
+- Hazard Detection Unit
+- Data Forwarding Unit
+- Modular RTL implementation
+- Verilog HDL based design
+- Hierarchical project organization
 
 ---
 
-# Directory Structure
+# Processor Pipeline
+
+The processor follows the classic five-stage RISC-V pipeline.
+
+| Stage | Description |
+|-------|-------------|
+| **Instruction Fetch (IF)** | Fetches instructions and updates the Program Counter |
+| **Instruction Decode (ID)** | Decodes instructions, reads register operands and generates control signals |
+| **Execute (EX)** | Performs ALU operations, branch evaluation and cryptographic instruction execution |
+| **Memory (MEM)** | Executes load/store operations through Data Memory |
+| **Write Back (WB)** | Writes computation results back into the Register File |
+
+Complete documentation for every stage is available inside the corresponding directory under:
+
+```text
+rtl/cpu/
+```
+
+---
+
+# Supported Directory Structure
 
 ```text
 rtl/
 ├── cpu/
+│   ├── cpu_top/
 │   ├── fetch/
 │   ├── decode/
 │   ├── execute/
 │   ├── memory/
 │   ├── writeback/
-│   ├── hazard_unit/
-│   └── cpu_top/
+│   └── hazard_unit/
 │
 └── crypto/
 ```
 
----
-
-# CPU Pipeline
-
-## Fetch Stage
-
-Responsible for:
-
-- Program Counter (PC)
-- PC increment logic
-- Instruction Memory
-- Instruction Fetch
-
----
-
-## Decode Stage
-
-Responsible for:
-
-- Register File
-- Control Unit
-- Immediate Generation
-- Instruction Decode
-
----
-
-## Execute Stage
-
-Responsible for:
-
-- ALU Operations
-- Branch Evaluation
-- Operand Selection
-- Arithmetic and Logical Instructions
-
----
-
-## Memory Stage
-
-Responsible for:
-
-- Data Memory Access
-- Load Operations
-- Store Operations
-
----
-
-## Write Back Stage
-
-Responsible for:
-
-- Register Write Back
-- Result Selection
-
----
-
-## Hazard Unit
-
-Implements hazard detection and pipeline control to ensure correct execution of dependent instructions.
+Each directory contains its own documentation describing the RTL implementation, internal architecture and constituent modules.
 
 ---
 
 # Crypto Co-Processor
 
-The repository also contains a lightweight cryptographic co-processor designed for integration with the RISC-V pipeline.
+The processor integrates a lightweight cryptographic co-processor through a tightly coupled interface rather than using memory-mapped communication.
 
-The crypto subsystem is modular and can be extended with additional cryptographic algorithms.
+The accelerator supports:
+
+- Lightweight AES Encryption
+- Custom Crypto Instruction Interface
+- Busy/Done Handshake Protocol
+- Pipeline Stall Logic
+- Native Processor Integration
+
+The internal RTL architecture of the crypto accelerator is documented under:
+
+```text
+rtl/crypto/
+```
 
 ---
 
-# Repository Organization
+# Functional Verification
 
-Each pipeline stage is documented independently to improve readability and simplify RTL exploration.
+The following waveform demonstrates the interaction between the processor and the cryptographic accelerator.
 
-Future updates will include:
+The processor issues an encryption request through **aes_start**, the accelerator enters the **aes_busy** state while computation is performed, and finally returns the encrypted ciphertext after completion.
 
-- Architecture diagrams
-- Datapath illustrations
-- Control path diagrams
-- RTL hierarchy
-- Simulation waveforms
-- Verification methodology
+<p align="center">
+  <img src="docs/images/handshake.png" width="950">
+</p>
+
+---
+
+# Project Organization
+
+The repository has been organized hierarchically for easier navigation.
+
+```text
+RISC-V-Crypto-CoProcessor/
+│
+├── docs/
+│   └── images/
+│
+├── rtl/
+│   ├── cpu/
+│   │   ├── fetch/
+│   │   ├── decode/
+│   │   ├── execute/
+│   │   ├── memory/
+│   │   ├── writeback/
+│   │   ├── hazard_unit/
+│   │   └── cpu_top/
+│   │
+│   └── crypto/
+│
+└── memory/
+```
+
+Every CPU stage has its own dedicated README containing:
+
+- RTL Block Diagram
+- Internal RTL Schematic
+- Module Description
+- Inputs and Outputs
+- Design Notes
 
 ---
 
 # Development Tools
 
 - Verilog HDL
-- Xilinx Vivado
-- ModelSim / Compatible Simulator
+- Xilinx Vivado 2025.1
+- Quartus
+
+
 
 ---
 
@@ -145,10 +151,10 @@ Future updates will include:
 
 **Ishan Upadhye**
 
-M.Tech VLSI Design
+M.Tech – VLSI Design
 
 ---
 
-## License
+# License
 
 This project is released for educational and research purposes.
