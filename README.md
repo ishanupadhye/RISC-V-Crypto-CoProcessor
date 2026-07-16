@@ -11,7 +11,7 @@ This repository presents the complete RTL implementation of a pipelined RISC-V p
 The figure below illustrates the complete processor architecture, showing the integration of the five-stage RISC-V pipeline with the custom cryptographic co-processor.
 
 <p align="center">
-  <img src="docs/images/cipher.png" width="950">
+  <img src="docs/images/riscv_cpu_synthesis.png" width="950">
 </p>
 
 ---
@@ -90,7 +90,7 @@ rtl/crypto/
 
 ---
 
-# Functional Verification
+# Cryptoprocessor Interface
 
 The following waveform demonstrates the interaction between the processor and the cryptographic accelerator.
 
